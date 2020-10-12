@@ -9,7 +9,7 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 
 | ![](figures/pong_score_21.gif) | ![](figures/breakout_score_851.gif) | ![](figures/spaceinvaders_score_2395.gif) |
 | :---: | :---: | :---: |
-| ![](figures/enduro_score_1815.gif) | ![](figures/mspacman_score_9270.gif) | ![](figures/montezuma_score_8000.gif)|
+| ![](figures/enduro_score_1815.gif) | ![](figures/mspacman_score_10391.gif) | ![](figures/montezuma_score_8000.gif)|
 
 <!--| :---: | :---: | -->
 
@@ -20,7 +20,7 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 <!--* [Instructions](#instructions)
     * [Dependencies](#dependencies)
     * [Installation](#installation)
-    * [Usage](#usage)-->
+    * [Usage](#usage)--> 
 * [Some Experiments](#experiments)
     * [Ablations in the game *Enduro*](#enduroexp)
     * [Using demonstrations to learn *Montezuma's Revenge*](#montezumaexp)
@@ -30,10 +30,10 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 ## Features <a name="features"></a>
 ---
 * DQN (cf. [*Human-level control through deep reinforcement learning* (Mnih et al. 2015)](http://klab.tch.harvard.edu/academia/classes/BAI/pdfs/MnihEtAlHassibis15NatureControlDeepRL.pdf))
-* Double DQN (cf. [*Deep Reinforcement Learning with Double Q-learning* (Van Hasselt, Guez, Silver 2015)](http://klab.tch.harvard.edu/academia/classes/BAI/pdfs/MnihEtAlHassibis15NatureControlDeepRL.pdf))
+* Double DQN (cf. [*Deep Reinforcement Learning with Double Q-learning* (Van Hasselt, Guez, Silver 2015)](https://arxiv.org/pdf/1509.06461.pdf))
 * PER (cf. [*Prioritized Experience Replay* (Schaul et al. 2015)](https://arxiv.org/pdf/1511.05952.pdf))
 * Dueling DQN (cf. [*Dueling Network Architectures for Deep Reinforcement Learning* (Wang et al. 2016)](http://proceedings.mlr.press/v48/wangf16.pdf))
-* n-step DQN (cf. [*Understanding Multi-Step Deep ReinforcementLearning: A Systematic Study of the DQN Target* (Hernandez-Garcia, Sutton 2019)](https://arxiv.org/pdf/1901.07510.pdf))
+* n-step DQN (cf. [*Understanding Multi-Step Deep Reinforcement Learning: A Systematic Study of the DQN Target* (Hernandez-Garcia, Sutton 2019)](https://arxiv.org/pdf/1901.07510.pdf))
 * DQfD (cf. [*Deep Q-Learning from Demonstrations* (Hester et al. 2018)](https://arxiv.org/pdf/1704.03732.pdf))
 
 <!--## Instructions <a name="instructions"></a>
@@ -83,7 +83,7 @@ Due to very sparse rewards and the need of long-term planning, *Montezuma's Reve
 * [ ] more advanced exploration strategies
 * [ ] argparse function for command-line parameter selection
 * [ ] random seed control for better reproducibility
-* [ ] agent evaluation as suggested in [*The Arcade Learning Environment:An Evaluation Platform for General Agents* (Bellemare et al. 2013)](https://arxiv.org/pdf/1207.4708.pdf) for better comparability
+* [ ] agent evaluation as suggested in [*The Arcade Learning Environment: An Evaluation Platform for General Agents* (Bellemare et al. 2013)](https://arxiv.org/pdf/1207.4708.pdf) for better comparability
 
 ## License <a name="license"></a>
 ---
