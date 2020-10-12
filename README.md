@@ -1,7 +1,4 @@
 # Deep Q-Learning from Demonstrations (DQfD)
----
----
-
 This repository contains an implementation of the learning algorithm proposed in [*Deep Q-Learning from Demonstrations* (Hester et al. 2018)](https://arxiv.org/pdf/1704.03732.pdf) for solving *Atari 2600* video games using a combination of reinforcement learning and imitation learning techniques.
 
 Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit Demonstrationen*](https://ins.uni-bonn.de/media/public/publication-media/BA_Skript_Felix_Kerkhoff.pdf).
@@ -15,12 +12,7 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 
 
 ## Table of Contents
----
 * [Features](#features)
-<!--* [Instructions](#instructions)
-    * [Dependencies](#dependencies)
-    * [Installation](#installation)
-    * [Usage](#usage)--> 
 * [Some Experiments](#experiments)
     * [Ablations in the game *Enduro*](#enduroexp)
     * [Using demonstrations to learn *Montezuma's Revenge*](#montezumaexp)
@@ -28,7 +20,6 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 * [License](#license)
 
 ## Features <a name="features"></a>
----
 * DQN (cf. [*Human-level control through deep reinforcement learning* (Mnih et al. 2015)](http://klab.tch.harvard.edu/academia/classes/BAI/pdfs/MnihEtAlHassibis15NatureControlDeepRL.pdf))
 * Double DQN (cf. [*Deep Reinforcement Learning with Double Q-learning* (Van Hasselt, Guez, Silver 2015)](https://arxiv.org/pdf/1509.06461.pdf))
 * PER (cf. [*Prioritized Experience Replay* (Schaul et al. 2015)](https://arxiv.org/pdf/1511.05952.pdf))
@@ -37,8 +28,10 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 * DQfD (cf. [*Deep Q-Learning from Demonstrations* (Hester et al. 2018)](https://arxiv.org/pdf/1704.03732.pdf))
 
 <!--## Instructions <a name="instructions"></a>
----
-...
+* [Instructions](#instructions)
+    * [Dependencies](#dependencies)
+    * [Installation](#installation)
+    * [Usage](#usage)
 
 ### Dependencies <a name="dependencies"></a>
 * Python 3
@@ -52,7 +45,6 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 ... -->
 
 ## Some Experiments <a name="experiments"></a>
----
 ### Ablations in the game *Enduro* <a name="enduroexp"></a>
 In the first experiment we investigate the influence of the different components of *n-step Prioritized Dueling Double Deep Q-Learning* using the example of the game *Enduro*. We will do this by leaving out exactly one of the components and keeping all other parameters unchanged.
 
@@ -66,7 +58,6 @@ Due to very sparse rewards and the need of long-term planning, *Montezuma's Reve
 **Note**: The figures show the number of steps (i.e. the number of decisions made by the agent) on the x-axis and the scores achieved during the training process on the y-axis. The learning curves are smoothed using the moving average over intervals of 50 episodes and the shaded areas correspond to the standard deviance within these intervals.
 
 ## Task List <a name="todo"></a>
----
 * [x] binary sum tree for fast proportional sampling
 * [x] Cython implementation of PER for memory efficient and fast storage and sampling of experiences
 * [x] DQN implementation (in TensorFlow 2 syntax) with an optional dueling network architecture and the possibility to use a combination of the following losses:
@@ -86,7 +77,6 @@ Due to very sparse rewards and the need of long-term planning, *Montezuma's Reve
 * [ ] agent evaluation as suggested in [*The Arcade Learning Environment: An Evaluation Platform for General Agents* (Bellemare et al. 2013)](https://arxiv.org/pdf/1207.4708.pdf) for better comparability
 
 ## License <a name="license"></a>
----
 This project is licensed under the terms of the [MIT license](LICENSE.md).
 
 Copyright (c) 2020 Felix Kerkhoff
