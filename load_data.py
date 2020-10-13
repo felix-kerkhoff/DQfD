@@ -246,7 +246,7 @@ class LoadAtariHeadData:
         return(frames, actions, rewards, episode_endings)
     
     
-    def get_demonstrations(self, frame_shape = (84, 84), recompute_demonstrations = False, only_highscore = False, frame_skip = 4):
+    def get_demonstrations(self, frame_shape = (84, 84), recompute_demonstrations = False, only_highscore = False, exclude_highscore = True, frame_skip = 4):
         """Return demonstration data in the form: (frames, actions, rewards, episode_endings)"""
         # check if demonstrations already exist and load them if they do exist
         if (os.path.exists(self.archive_dir + self.game_name + "_frames.npy") and
@@ -266,7 +266,9 @@ class LoadAtariHeadData:
                 zip_archive.extractall(extract_dir.name)
                 print("\n %i files have been extracted from %s to a temporary dircetory and will now be processed:" %(len(zip_archive.namelist()), self._zipfile_loc))
                 for filename in zip_archive.namelist():
-                    if (only_highscore and 'highscore' in filename) or not only_highscore:
+                    if ((exclude_highscore and 'highscore' not in filename) or 
+                        (only_highscore and 'highscore' in filename) or 
+                        (not exclude_highscore and not only_highscore)):
                         if filename.endswith('.txt'):
                             self._update_act_rew_df(extract_dir.name + "/" + filename)
 
@@ -301,12 +303,13 @@ class LoadAtariHeadData:
                               epsilon = 0.0001,
                               recompute_demonstrations = False,
                               only_highscore = False,
+                              exclude_highscore = True,
                               frame_skip = 4):
         """Load demonstration data and return an instance of PrioritizedExperienceReplay,
         initialized with the demonstration data."""
         
         # get demonstrations
-        frames, actions, rewards, episode_endings = self.get_demonstrations(frame_shape, recompute_demonstrations, only_highscore, frame_skip)
+        frames, actions, rewards, episode_endings = self.get_demonstrations(frame_shape, recompute_demonstrations, only_highscore, exclude_highscore, frame_skip)
         
         # set all priorities of demonstrations to 1
         priorities = np.ones(actions.shape[0], dtype = priority_dtype)
