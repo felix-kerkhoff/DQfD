@@ -79,9 +79,6 @@ class ProcessedAtariEnv(gym.Wrapper):
             reward_processor:    callable;
                                  function for processing the raw rewards
 
-            episodic_life:       bool;
-                                 variable indicating that the loss of a life is considered as the end of an episode
-
             neg_reward_terminal: bool;
                                  variable indicating that a negative reward is considered as the end of an episode
     """
@@ -91,7 +88,6 @@ class ProcessedAtariEnv(gym.Wrapper):
                  frame_processor = atari_pong_processor,
                  action_processor = lambda x: x, 
                  reward_processor = lambda x: x,
-                 episodic_life = True,
                  neg_reward_terminal = False):
         gym.Wrapper.__init__(self, env)
         self.frame_processor = frame_processor
@@ -100,29 +96,20 @@ class ProcessedAtariEnv(gym.Wrapper):
         self._unprocessed_reward = 0.
         self._unprocessed_frame = self.env.reset()
         self.neg_reward_terminal = neg_reward_terminal
-        self.episodic_life = episodic_life
-        #if not episodic_life:
-        self.env.was_real_done = True
     
   
     def true_reset(self):
         """Perform a true reset on OpenAI's EpisodicLifeEnv"""
-        #if not self.episodic_life:
-        self.env.was_real_done = True
         return(self.unwrapped.reset())
     
     def reset(self):
         """Reset the environment and return the processed frame"""
-        if not self.episodic_life:
-            self.env.was_real_done = False
         return(self.frame_processor(self.env.reset()))
     
     def step(self, action):
         """Perform one step in the processed environment"""
         action = self.action_processor(action)
         frame, reward, done, info = self.env.step(action)
-        if not self.episodic_life:
-            self.env.was_real_done = done
         self._unprocessed_reward = reward
         self._unprocessed_frame = frame
         if self.neg_reward_terminal:
