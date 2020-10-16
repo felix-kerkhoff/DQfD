@@ -1,5 +1,4 @@
 import imageio
-from skimage.transform import resize
 import os
 import texttable as tt
 import pickle
