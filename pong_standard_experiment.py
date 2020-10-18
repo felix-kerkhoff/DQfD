@@ -29,7 +29,7 @@ frame_processor = atari_pong_processor
 game_id = 'PongNoFrameskip-v4'
 env = make_atari(game_id)
 env = wrap_deepmind(env)
-env = ProcessedAtariEnv(env, frame_processor, reward_processor = lambda x: np.sign(x))
+env = ProcessedAtariEnv(env, frame_processor, reward_processor = lambda x: np.sign(x), neg_reward_terminal = True)
 
 # additional env specific parameters
 frame_shape = env.reset().shape
