@@ -17,7 +17,7 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
     * [Installation](#installation)
     * [Usage](#usage)
 * [Some Experiments](#experiments)
-    * [Different numbers $n$ for the $n$-step loss in the game *Pong*](#pongexp)
+    * [Different numbers n for the n-step loss in the game *Pong*](#pongexp)
     * [Ablations in the game *Enduro*](#enduroexp)
     * [Using demonstrations to learn *Montezuma's Revenge*](#montezumaexp)
 * [Task List](#todo)
@@ -49,7 +49,7 @@ Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit D
 #### 1. Clone the repository
 In order to clone the repository, open your terminal, move to the directory in which you want to store the project and type
 ```console
-git clone https://github.com/felix-kerkhoff/DQfD.git
+$ git clone https://github.com/felix-kerkhoff/DQfD.git
 ```
 
 #### 2. Create a virtual environment
@@ -57,7 +57,7 @@ The installation of the GPU-Version of TensorFlow with the proper Nvidia driver 
 I recommend using [Anaconda](https://docs.anaconda.com/anaconda/install/)/[Miniconda](https://docs.conda.io/en/latest/miniconda.html) to create a virtual environment for the installation of the necessary packages, as `conda` will automatically install the right Cuda libraries.
 So type
 ```console
-conda create --name atari_env
+$ conda create --name atari_env
 ```
 to create an environment called `atari_env`. 
 If you already have a working TensorFlow 2 installation, you can of course also use `venv` and `pip` to create the virtual environment and install the packages.
@@ -65,11 +65,11 @@ If you already have a working TensorFlow 2 installation, you can of course also 
 #### 3. Install the required packages 
 To install the packages, we first have to activate the environment by typing:
 ```console
-conda activate atari_env
+$ conda activate atari_env
 ```
 Then install the necessary packages specified in [requirements.txt](requirements.txt) by using the following command in the directory of your project:
 ```console
-conda install --file requirements.txt -c conda-forge -c powerai
+$ conda install --file requirements.txt -c conda-forge -c powerai
 ```
 
 **Note**: 
@@ -85,14 +85,14 @@ conda install --file requirements.txt -c conda-forge -c powerai
 To see if everything works fine, I recommend training your first agent on the game *Pong* as this game needs the least training time.
 Therefor just run the following command in your terminal (in the directory of your project):
 ```console
-python pong_standard_experiment.py
+$ python pong_standard_experiment.py
 ```
 You should be seeing good results after about 150,000 training steps which corresponds to about 15 minutes of computation time on my machine.
 By using `n_step = 50` instead of `n_step = 10` as the number of steps considered for the n-step loss, you can even speed up the process to get good results after less than 100,000 training steps or 10 minutes (see the [experiment](#pongexp) in the next section).
 Feel free to experiment with all the other parameters and games by changing them in the respective file.
 
 ## Some Experiments <a name="experiments"></a>
-### Different numbers $n$ for the $n$-step loss in the game *Pong* <a name="pongexp"></a>
+### Different numbers n for the n-step loss in the game *Pong* <a name="pongexp"></a>
 With the first experiment, we try to show how the use of multi-step losses can speed up the training process in the game *Pong*.
 
 ![](figures/pong_nstep.png)
