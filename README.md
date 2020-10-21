@@ -4,7 +4,7 @@ This repository contains an implementation of the learning algorithm proposed in
 Note: The implementation is part of my Bachelor's Thesis [*Tiefes Q-Lernen mit Demonstrationen*](https://ins.uni-bonn.de/media/public/publication-media/BA_Skript_Felix_Kerkhoff.pdf).
 
 
-| ![](figures/pong_score_21.gif) | ![](figures/breakout_score_851.gif) | ![](figures/spaceinvaders_score_2395.gif) |
+| ![](figures/pong_score_21.gif) | ![](figures/breakout_score_851.gif) | ![](figures/spaceinvaders_score_3115.gif) |
 | :---: | :---: | :---: |
 | ![](figures/enduro_score_1815.gif) | ![](figures/mspacman_score_10391.gif) | ![](figures/montezuma_score_8000.gif)|
 
