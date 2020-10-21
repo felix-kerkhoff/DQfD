@@ -74,6 +74,7 @@ class BaseQAgent:
         # logging variables
         self._q_values = []
         self._losses = []
+        self._score = 0.0
         
         
     
@@ -204,7 +205,7 @@ class BaseQAgent:
             self._pretrain(pretrain_steps, target_interval)
             
         # logging initialization
-        score, self._q_values, self._losses = 0., [], []
+        self._score, self._q_values, self._losses = 0., [], []
         raw_frames = np.zeros(shape = (max_steps_per_episode, *self.env._unprocessed_frame.shape), dtype = np.uint8)
 
         episode_idx = 0
@@ -247,15 +248,15 @@ class BaseQAgent:
                 #-------------------------------------------------------------------------------#
                 
                 # logging
-                score += self.env._unprocessed_reward
+                self._score += self.env._unprocessed_reward
                 raw_frames[i] = self.env._unprocessed_frame
                 
                 
                 self._step_counter += 1
                 
                 if self.env.was_real_done:
-                    self.logger.add_episode_logs(self._step_counter, score, self._q_values, self._losses, raw_frames[:i])
-                    score, self._q_values, self._losses = 0., [], []
+                    self.logger.add_episode_logs(self._step_counter, self._score, self._q_values, self._losses, raw_frames[:i])
+                    self._score, self._q_values, self._losses = 0., [], []
                     break
                     
                 if done:
@@ -264,8 +265,8 @@ class BaseQAgent:
                     
             if not self.env.was_real_done:
                 self.memory.add_experience(action, reward, new_frame, 1, True)
-                self.logger.add_episode_logs(self._step_counter, score, self._q_values, self._losses, raw_frames[:i])
-                score, self._q_values, self._losses = 0., [], []
+                self.logger.add_episode_logs(self._step_counter, self._score, self._q_values, self._losses, raw_frames[:i])
+                self._score, self._q_values, self._losses = 0., [], []
                 
             if episode_idx%(num_episodes/output_freq)==0:
                 validation_score, validation_frames = self.test(record = True, max_steps_per_episode = max_steps_per_episode)
